@@ -13,18 +13,16 @@ const Header : FC<header> = () => {
     const[counterCart, setCounterCart] = useState<number>(0)
     const[productsPrice, setProductsPrice] = useState<number>(0)
     const [searchActive , setSearchActive] = useState<boolean>(false)
-
+    const [catalogActive, setCatalogActive] = useState<boolean>(false)
 
 
     return (
         <>
          <div onClick={()=>{setIsVisible(false)}} className={menuActive ? 'upper_block active' : 'upper_block'}>
-             <div className={menuActive ? 'section active' : 'section'}>
-                 <div className={menuActive ? 'menuBtn active' : 'menuBtn'}
+                 <div style={{display: catalogActive ? 'none' : 'block'}} className={menuActive ? 'menuBtn active' : 'menuBtn'}
                       onClick={()=>{setMenuActive(!menuActive)}}>
                      <span></span>
                  </div>
-             </div>
              <div className={menuActive ? 'time_delivery active' : 'time_delivery' }>
                  <img alt={'time'} src={require('../../image/svgIcons/interface-time-clock-circle--clock-loading-measure-time-circle.svg').default}></img>
                  <p>Пн-Сб: 8:00–20:00 Вс: 9:00–20:00</p>
@@ -65,8 +63,23 @@ const Header : FC<header> = () => {
                      </div>
                      <div>
                          <img alt={'mail'} src={require('../../image/svgIcons/mail-send-envelope--envelope-email-message-unopened-sealed-close.svg').default}></img>
-                         <p>info@lavkaroz.ru</p>
+                         <p style={{color:'#0093A2'}}>info@lavkaroz.ru</p>
                      </div>
+                 </div>
+                 <div className={'line'}></div>
+                 <div className={'social_networks'}>
+                     <p>Напишите нам:</p>
+                     <Link to={'/'}>
+                         <img alt={'WhatsApp'} src={require('../../image/social networks/WhatsApp.svg').default}></img>
+                     </Link>
+                     <Link to={'/'}><img alt={'Telegram'} src={require('../../image/social networks/Telegram.svg').default}></img>
+                     </Link>
+                     <Link to={'/'}>
+                         <img alt={'VK'} src={require('../../image/social networks/Vkontakte.svg').default}></img>
+                     </Link>
+                     <Link to={'/'}>
+                         <img alt={'Instagram'} src={require('../../image/social networks/Instagram.svg').default}></img>
+                     </Link>
                  </div>
              </div>
              <div style={{display: isVisible ? 'flex' : 'none'}} className={'visible_inf'} >
@@ -105,19 +118,65 @@ const Header : FC<header> = () => {
                      </div>
                  </div>
              <div className={'footer_menu'}>
-                 <img className={'home_icon'} alt={'home'} src={require('../../image/svgIcons/interface-home-2--door-entrance-home-house-map-roof-round.svg').default}></img>
-                 <img className={'search_icon'} alt={'heart'} src={require('../../image/svgIcons/Search, Menu.svg').default}></img>
-                <Circle image={<img alt={'heart'} src={require('../../image/svgIcons/interface-favorite-heart--reward-social-rating-media-heart-it-like-favorite-love.svg').default}></img>}></Circle>
-                     <div className={'icons_lower_header cart'}>
-                         <Circle image={<img className={'icons_lower_header'} alt={'cart'} src={require('../../image/svgIcons/shopping-cart-basket-3--shopping-basket.svg').default}></img>}/>
-                        <div className={'counter'}>{counterCart}</div>
-                        <span className={'total'}>{counterCart * productsPrice }</span>
+                 <Link className={'home_icon footer_menu_item'} to={'/'}><img  alt={'home'} src={require('../../image/svgIcons/interface-home-2--door-entrance-home-house-map-roof-round.svg').default}></img><p>Главная</p></Link>
+                 <Link onClick={()=>{setCatalogActive(!catalogActive)}} className={'search_icon footer_menu_item'} to={'/'}><img  alt={'heart'} src={require('../../image/svgIcons/Search, Menu.svg').default}></img><p>Каталог</p></Link>
+                 <Link className={'footer_menu_item heart_icon'} to={'/'}><Circle image={<img alt={'heart'} src={require('../../image/svgIcons/interface-favorite-heart--reward-social-rating-media-heart-it-like-favorite-love.svg').default}></img>}></Circle> <p>Избранное</p></Link>
+                 <Link to={'/'}>
+                     <div  className={'icons_lower_header cart footer_menu_item' }>
+                         <div className={'cart_icon'}>
+                             <Circle image={<img className={'icons_lower_header'} alt={'cart'} src={require('../../image/svgIcons/shopping-cart-basket-3--shopping-basket.svg').default}></img>}/>
+                             <div className={'counter'}>{counterCart}</div>
+                             <span className={'total'}>{counterCart * productsPrice }</span>
+                         </div>
+                         <p>Корзина</p>
                      </div>
-                 <img className={'icons_lower_header'} alt={'heart'} src={require('../../image/svgIcons/interface-user-single--close-geometric-human-person-single-up-user.svg').default}></img>
-
+                 </Link>
+                 <Link  className={'icons_lower_header footer_menu_item'} to={'/'}><img alt={'person'} src={require('../../image/svgIcons/interface-user-single--close-geometric-human-person-single-up-user.svg').default}></img><p>Мои заказы</p></Link>
+             </div>
+             <div className={catalogActive ? 'catalog_menu active ' : 'catalog_menu'}>
+                 <div className={catalogActive ? 'search_block active' : 'search_block'}><input  className={ 'search_catalog'} placeholder={'Поиск по сайту'}></input></div>
+                 <div onClick={()=>{setCatalogActive(false)}} className={catalogActive ? 'closeBtn active' : 'closeBtn'}></div>
              </div>
          </div>
-         <div className={'lower_block'}></div>
+         <div className={catalogActive ? 'lower_block active' : 'lower_block'}>
+             <h3 style={{display: catalogActive ? 'block' : 'none', marginLeft:'50px'}}>Каталог товаров</h3>
+             <div className={'item_lower_block'}>
+                 <img alt={'discount'} src={require('../../image/svgIcons/discount.svg').default}></img>
+                  <NavLink to={'/discount'}><span>АКЦИИ</span></NavLink>
+             </div>
+             {/*<div className={catalogActive ? 'line' : ''}></div>*/}
+
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Цветы поштучно</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Розы</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Букеты</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Композиции</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Подарки</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Шары</NavLink>
+                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+             </div>
+             <div className={'item_lower_block'}>
+                 <NavLink to={'/'}>Свадебные букеты</NavLink>
+             </div>
+             <div className={'item_lower_block'}>
+                 <p>повод</p>
+             </div>
+         </div>
         </>
     );
 };
