@@ -8,10 +8,11 @@ interface header {
 }
 
 const Header : FC<header> = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState<boolean>(false)
     const [menuActive, setMenuActive] = useState<boolean>(false)
-    const[counterCart, setCounterCart] = useState(0)
-    const[productsPrice, setProductsPrice] = useState(0)
+    const[counterCart, setCounterCart] = useState<number>(0)
+    const[productsPrice, setProductsPrice] = useState<number>(0)
+    const [searchActive , setSearchActive] = useState<boolean>(false)
 
 
 
@@ -24,7 +25,7 @@ const Header : FC<header> = () => {
                      <span></span>
                  </div>
              </div>
-             <div className={'time_delivery'}>
+             <div className={menuActive ? 'time_delivery active' : 'time_delivery' }>
                  <img alt={'time'} src={require('../../image/svgIcons/interface-time-clock-circle--clock-loading-measure-time-circle.svg').default}></img>
                  <p>Пн-Сб: 8:00–20:00 Вс: 9:00–20:00</p>
              </div>
@@ -40,14 +41,38 @@ const Header : FC<header> = () => {
                  <NavLink className={'link'} to={'/delivery'}>
                      Блог
                  </NavLink>
-                 <NavLink className={'link'} onClick={()=>{setIsVisible(!isVisible)}} to={'/information'}>
+                 <NavLink  className={'link link_visible'} onClick={()=>{setIsVisible(!isVisible)}} to={'/information'}>
                      Информация
                      <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}/>
                  </NavLink>
+                 <NavLink className={'link_none link'} to={'/guarantees'}>Гарантии</NavLink>
+                 <NavLink className={'link_none link'} to={'/question'}>Вопрос ответ</NavLink>
+                 <NavLink className={'link_none link'} to={'/corporation'}>Корпоративным клиентам</NavLink>
+                 <NavLink className={'link_none link'} to={'/obout'}>О компани</NavLink>
+                 <div className={'line'}></div>
+                 <div className={'store_information '}>
+                     <div>
+                         <img alt={'call'} src={require('../../image/svgIcons/Call_line.svg').default}></img>
+                         <p>+7 (920) 211-49-03</p>
+                     </div>
+                     <div>
+                         <img alt={'travel'} src={require('../../image/svgIcons/travel-map-location-pin--navigation-map-maps-pin-gps-location.svg').default}></img>
+                         <p>ул. Революции 1905 года 80</p>
+                     </div>
+                     <div>
+                         <img alt={'travel'} src={require('../../image/svgIcons/travel-map-location-pin--navigation-map-maps-pin-gps-location.svg').default}></img>
+                         <p>ул. Вл. Невского 17</p>
+                     </div>
+                     <div>
+                         <img alt={'mail'} src={require('../../image/svgIcons/mail-send-envelope--envelope-email-message-unopened-sealed-close.svg').default}></img>
+                         <p>info@lavkaroz.ru</p>
+                     </div>
+                 </div>
              </div>
              <div style={{display: isVisible ? 'flex' : 'none'}} className={'visible_inf'} >
+
                  <NavLink to={'/guarantees'}>Гарантии</NavLink>
-                 <NavLink to={'/question'}></NavLink>
+                 <NavLink to={'/question'}>Вопрос ответ</NavLink>
                  <NavLink to={'/corporation'}>Корпоративным клиентам</NavLink>
                  <NavLink to={'/obout'}>О компани</NavLink>
              </div>
@@ -64,13 +89,13 @@ const Header : FC<header> = () => {
             </div>
 
          </div>
-         <div className={'middle_block'}>
+         <div className={searchActive ? 'middle_block active' : 'middle_block  '}>
              <Link to={'/main'}>
-                 <img alt={'logo'} src={require('../../image/logo.svg').default}/>
+                 <img className={searchActive ? 'logo none' : 'logo  '} alt={'logo'} src={require('../../image/logo.svg').default}/>
 
              </Link>
              <p className={'delivery_flower'}>Доставка цветов<br/> в Воронеже</p>
-             <input className={'search'} placeholder={'Поиск по сайту'}></input>
+             <input onClick={()=>{setSearchActive(!searchActive)}} className={searchActive ? 'search active' : 'search'} placeholder={'Поиск по сайту'}></input>
 
                  <div className={'phone'}>
                      <Circle image={<img alt={'phone'} src={require('../../image/svgIcons/Call.svg').default}></img>}></Circle>
