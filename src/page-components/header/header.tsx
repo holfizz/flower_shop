@@ -7,6 +7,8 @@ interface header {
     onClick:()=>void;
 }
 
+
+
 const Header : FC<header> = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false)
     const [menuActive, setMenuActive] = useState<boolean>(false)
@@ -15,8 +17,9 @@ const Header : FC<header> = () => {
     const [searchActive , setSearchActive] = useState<boolean>(false)
     const [catalogActive, setCatalogActive] = useState<boolean>(false)
 
+
     return (
-        <>
+        <div>
          <div onClick={()=>{setIsVisible(false)}} className={menuActive ? 'upper_block active' : 'upper_block'}>
                  <div style={{display: catalogActive ? 'none' : 'block'}} className={menuActive ? 'menuBtn active' : 'menuBtn'}
                       onClick={()=>{setMenuActive(!menuActive)}}>
@@ -176,7 +179,7 @@ const Header : FC<header> = () => {
                  <p>повод</p>
              </div>
          </div>
-        </>
+        </div>
     );
 };
 
