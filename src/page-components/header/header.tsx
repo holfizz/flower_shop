@@ -15,7 +15,6 @@ const Header : FC<header> = () => {
     const [searchActive , setSearchActive] = useState<boolean>(false)
     const [catalogActive, setCatalogActive] = useState<boolean>(false)
 
-
     return (
         <>
          <div onClick={()=>{setIsVisible(false)}} className={menuActive ? 'upper_block active' : 'upper_block'}>
@@ -89,7 +88,7 @@ const Header : FC<header> = () => {
                  <NavLink to={'/corporation'}>Корпоративным клиентам</NavLink>
                  <NavLink to={'/obout'}>О компани</NavLink>
              </div>
-            <div className={'block_header_soc'}>
+            <div  className={'block_header_soc'}>
                 <div className={'socials'}>
                     <img width={'30'} alt={'user'} src={require('../../image/svgIcons/vk.svg').default}/>
                     <img width={'30'} alt={'user'} src={require('../../image/svgIcons/inst.svg').default}/>
