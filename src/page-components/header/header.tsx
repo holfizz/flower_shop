@@ -141,42 +141,44 @@ const Header : FC<header> = () => {
              </div>
          </div>
          <div className={catalogActive ? 'lower_block active' : 'lower_block'}>
-             <h3 style={{display: catalogActive ? 'block' : 'none', marginLeft:'50px'}}>Каталог товаров</h3>
-             <div className={'item_lower_block'}>
-                 <img alt={'discount'} src={require('../../image/svgIcons/discount.svg').default}></img>
-                  <NavLink to={'/discount'}><span>АКЦИИ</span></NavLink>
-             </div>
-             {/*<div className={catalogActive ? 'line' : ''}></div>*/}
+             <h3 style={{display: catalogActive ? 'block' : 'none'}}>Каталог товаров</h3>
+             <div>
+                 <div className={'item_lower_block'}>
+                     <img alt={'discount'} src={require('../../image/svgIcons/discount.svg').default}></img>
+                     <NavLink to={'/discount'}><span>АКЦИИ</span></NavLink>
+                 </div>
+                 {/*<div className={catalogActive ? 'line' : ''}></div>*/}
 
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Цветы поштучно</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Розы</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Букеты</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Композиции</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Подарки</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Шары</NavLink>
-                 <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
-             </div>
-             <div className={'item_lower_block'}>
-                 <NavLink to={'/'}>Свадебные букеты</NavLink>
-             </div>
-             <div className={'item_lower_block'}>
-                 <p>повод</p>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Цветы поштучно</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Розы</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Букеты</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Композиции</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Подарки</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Шары</NavLink>
+                     <img alt={'arrow'} src={require('../../image/svgIcons/Arrow.svg').default}></img>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <NavLink to={'/'}>Свадебные букеты</NavLink>
+                 </div>
+                 <div className={'item_lower_block'}>
+                     <p>повод</p>
+                 </div>
              </div>
          </div>
         </div>
