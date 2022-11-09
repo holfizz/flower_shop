@@ -1,0 +1,64 @@
+.flowerPost {
+  width: 278px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #E2E4EB;
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+  position: relative;
+  margin: 0 20px;
+}
+.flower_title{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #222A46;
+}
+.flower_description{
+  font-weight: 400;
+  font-size: 14px;
+  color: #505567;
+  line-height: 20px;
+}
+.originalPrice{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration-line: line-through;
+  color: #B0B2B9;
+}
+.salePrice{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #222A46;
+
+}
+.lower_block_flower_post{
+  display: inline-flex;
+  top: 80px;
+  position: relative;
+  align-items: flex-start;}
+.flower_price{
+  margin-right: 60px;
+}
+.heart_flower_post{
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-left: 210px;
+  margin-top: 10px;
+}
+@media(max-width: 425px){
+  .flowerPost{
+    transform:scale(0.9);
+  }
+}

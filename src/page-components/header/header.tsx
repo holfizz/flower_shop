@@ -141,8 +141,8 @@ const Header : FC<header> = () => {
              </div>
          </div>
          <div className={catalogActive ? 'lower_block active' : 'lower_block'}>
-             <h3 style={{display: catalogActive ? 'block' : 'none'}}>Каталог товаров</h3>
-             <div>
+             <h3 style={{display: catalogActive ? 'block' : 'none', marginLeft:'-30px'}}>Каталог товаров</h3>
+             <div className={'header_lower_block'}>
                  <div className={'item_lower_block'}>
                      <img alt={'discount'} src={require('../../image/svgIcons/discount.svg').default}></img>
                      <NavLink to={'/discount'}><span>АКЦИИ</span></NavLink>
