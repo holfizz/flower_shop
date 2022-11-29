@@ -1,7 +1,13 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './header.scss'
 import {Link, NavLink} from "react-router-dom";
 import Circle from "../../components/ui/circle/circle";
+import cartIcon from '../../image/svgIcons/shopping-cart-basket-3--shopping-basket.svg'
+import heart from '../../image/svgIcons/interface-favorite-heart--reward-social-rating-media-heart-it-like-favorite-love.svg'
+import call from '../../image/svgIcons/Call.svg'
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useDispatch} from "react-redux";
+import {getTotal} from "../../store/reducers/CartControl";
 
 interface header {
     onClick:()=>void;
@@ -12,11 +18,17 @@ interface header {
 const Header : FC<header> = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false)
     const [menuActive, setMenuActive] = useState<boolean>(false)
-    const[counterCart, setCounterCart] = useState<number>(0)
-    const[productsPrice, setProductsPrice] = useState<number>(0)
     const [searchActive , setSearchActive] = useState<boolean>(false)
     const [catalogActive, setCatalogActive] = useState<boolean>(false)
+    const totalQuantity = useTypedSelector(state => state.cartControl.cartTotalQuantity)
+    const totalPrice = useTypedSelector(state => state.cartControl.cartTotalPrice)
+    const cart = useTypedSelector(state => state.cartControl.cart)
+    const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        dispatch(getTotal())
+    },[cart]);
 
     return (
         <div>
@@ -105,7 +117,7 @@ const Header : FC<header> = () => {
 
          </div>
          <div className={searchActive ? 'middle_block active' : 'middle_block  '}>
-             <Link to={'/main'}>
+             <Link to={'/'}>
                  <img className={searchActive ? 'logo none' : 'logo  '} alt={'logo'} src={require('../../image/logo.svg').default}/>
 
              </Link>
@@ -113,7 +125,7 @@ const Header : FC<header> = () => {
              <input onClick={()=>{setSearchActive(!searchActive)}} className={searchActive ? 'search active' : 'search'} placeholder={'Поиск по сайту'}></input>
 
                  <div className={'phone'}>
-                     <Circle image={<img alt={'phone'} src={require('../../image/svgIcons/Call.svg').default}></img>}></Circle>
+                     <Circle image={call}></Circle>
                      <div className={'number'}>
                          <p>+7 (920) 211-49-03</p>
                          <span>Заказать звонок</span>
@@ -122,14 +134,14 @@ const Header : FC<header> = () => {
              <div className={'footer_menu'}>
                  <Link className={'home_icon footer_menu_item'} to={'/'}><img  alt={'home'} src={require('../../image/svgIcons/interface-home-2--door-entrance-home-house-map-roof-round.svg').default}></img><p>Главная</p></Link>
                  <Link onClick={()=>{setCatalogActive(!catalogActive)}} className={'search_icon footer_menu_item'} to={'/'}><img  alt={'heart'} src={require('../../image/svgIcons/Search, Menu.svg').default}></img><p>Каталог</p></Link>
-                 <Link className={'footer_menu_item heart_icon'} to={'/'}><Circle image={<img alt={'heart'} src={require('../../image/svgIcons/interface-favorite-heart--reward-social-rating-media-heart-it-like-favorite-love.svg').default}></img>}></Circle> <p>Избранное</p></Link>
+                 <Link className={'footer_menu_item heart_icon'} to={'/'}><Circle image={heart}></Circle> <p>Избранное</p></Link>
                  <Link to={'/'}>
                      <div  className={'icons_lower_header cart footer_menu_item' }>
-                         <div className={'cart_icon'}>
-                             <Circle image={<img className={'icons_lower_header'} alt={'cart'} src={require('../../image/svgIcons/shopping-cart-basket-3--shopping-basket.svg').default}></img>}/>
-                             <div className={'counter'}>{counterCart}</div>
-                             <span className={'total'}>{counterCart * productsPrice }</span>
-                         </div>
+                         <Link to={'/cart'} className={'cart_icon'}>
+                             <Circle image={cartIcon}/>
+                             <div className={'counter'}>{totalQuantity}</div>
+                             <span className={'total'}>{totalPrice}</span>
+                         </Link>
                          <p>Корзина</p>
                      </div>
                  </Link>

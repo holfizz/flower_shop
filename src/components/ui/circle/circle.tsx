@@ -8,7 +8,7 @@ interface cirlce {
 const Circle : FC <cirlce> = ({image}) => {
     return (
         <div className={'circle'}>
-            {image}
+            <img src={image} alt="circle"/>
         </div>
     );
 };

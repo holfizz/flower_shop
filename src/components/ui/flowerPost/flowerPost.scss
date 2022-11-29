@@ -1,6 +1,7 @@
 .flowerPost {
   width: 278px;
-  height: 440px;
+  min-height: 440px;
+  height: auto;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -9,7 +10,8 @@
   padding: 20px;
   align-items: center;
   position: relative;
-  margin: 0 20px;
+  box-sizing: content-box;
+  margin: 30px;
 }
 .flower_title{
   font-weight: 700;
@@ -39,7 +41,7 @@
 }
 .lower_block_flower_post{
   display: inline-flex;
-  top: 80px;
+  margin-top: auto;
   position: relative;
   align-items: flex-start;}
 .flower_price{

@@ -1,15 +1,17 @@
 import React from 'react';
 import './global style/style.scss'
-import Header from "./page-components/header/header";
-import Footer from "./page-components/footer/footer";
-import FlowerList from "./components/ui/flowerList/flowerList";
+import {Route, Routes} from "react-router-dom";
+import Cart from "./pages/cart/cart";
+import Main from "./pages/main/main";
 
 const App = () => {
     return (
         <div className={'wrapper'}>
-            <Header onClick={()=>{}}></Header>
-            <FlowerList></FlowerList>
-            <Footer></Footer>
+            <Routes >
+                    <Route element={<Cart/>} path={'/cart'}></Route>
+                    <Route element={<Main/>} path={'/'}></Route>
+            </Routes>
+
         </div>
     );
 };
